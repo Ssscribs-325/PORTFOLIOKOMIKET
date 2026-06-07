@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Academic Achievements || Ssscribs! Portfolio</title>
+
+
+<style>
+
+@keyframes bgFloat {
+    from { background-position: center top; }
+    to { background-position: center bottom; }
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body{
+    font-family: Georgia, serif;
+    display:flex;
+    background:#f3f3f3;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    z-index: 9999; 
+    
+}
+.sidebar{
+    width:230px;
+    height:100vh;
+    background:#607d34;
+    display:flex;
+    flex-direction:column;
+    padding-top:20px;
+    position:fixed;
+    left:0;
+    top:0;
+    z-index: 999;
+    
+}
+.logo{
+    color:white;
+    text-align:center;
+    font-size:40px;
+    margin-bottom:30px;
+}
+.nav-item{
+    color:#f0f1c4;
+    text-decoration:none;
+    padding:15px 25px;
+    display:block;
+    transition:0.3s;
+    text-align: center; 
+}
+
+.nav-item:hover {
+    background: #9ba91f;
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-item.active{
+    background:#9ba91f;
+    border-left:4px solid #f8c843;
+    font-weight:bold;
+}
+.navbutton{
+    background:none;
+    border:none;
+    color:#ffe5fe;
+    font-family:Georgia, serif;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.content{
+    margin-left:230px;
+    padding:30px;
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+
+.logo img {
+    width:60%;
+    height:auto;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    margin-left: 200px;
+    margin-right: -200px;
+}
+
+.works-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.work-item {
+    flex: 1 1 45%;
+    text-align: left;
+}
+
+.work-item img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.work-item img:hover {
+    transform: scale(.2);
+}
+
+
+.circle-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9ba91f;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.circle-btn:hover {
+  background-color: #607d34;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s; 
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+#intro, #works, #contact {
+    padding: 20px; /* Increased from 5px to give your text breathing room */
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    
+    /* Changed to 1.2s and used cubic-bezier for that premium glide effect */
+    animation: slideUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 2. UPDATED KEYFRAME VALUES */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px); /* Starts a bit lower for a cleaner glide */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-bg-header {
+    position: absolute;
+    top: 0;
+    left: 0px; /* Leaves room for your left sidebar */
+    right: 0;
+    height: 400px; /* Ends exactly at the halfway mark of your circle */
+    background-image: url('aheader.jpg'); 
+    filter: blur(3px);
+    opacity: 0.7;
+    
+    background-size: cover;        /* Scales the image evenly without stretching it */
+    background-position: center;   /* Centers the image horizontally and vertically */
+    background-repeat: no-repeat;  /* Prevents the image from tiling if it is small */
+    
+    z-index: 0; 
+}
+
+/* Important: Changes content container stack layer to render over the background */
+.content {
+    position: relative; 
+}
+
+.scroll-animate {
+    position: relative;
+    z-index: 1; /* Pushes profile and buttons in front of the background */
+}
+
+.content{
+    margin-left:200px;
+    padding:30px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+.dashboard-box{
+    background:#dfbe3c;
+    color:white;
+    display:inline-block;
+    padding:15px 25px;
+    border-radius:15px;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* JavaScript triggers this class when scrolled into view */
+.scroll-animate.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional small delays if elements appear at the exact same time */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+
+</style>
+
+<link rel="icon" type="image/png" href="ssscribs.png">
+
+</head>
+
+<body>
+<nav class="sidebar">
+
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+    <a href="index.html" class="nav-item">Home</a>
+    <a href="acadbg.html" class="nav-item">Academic Background</a>
+    <a href="achievements.html" class="nav-item active">Hall Of Achievements</a>
+    <a href="personalprojs.html" class="nav-item">Personal Projects ;)</a>
+
+</nav>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="profile-bg-header">
+</div>
+
+<main class="content">
+    <div class="scroll-animate delay-1">
+    <div class="dashboard-box">
+        Hall Of Achievements
+    </div>
+<section id="intro">
+Within my 2 years of being in an arts club at school, I joined a lot of activities that they offered.
+</section>
+
+<section id="works">
+    <img src="cert1.png" style="width:278px;">
+    <img src="cert2.png" style="width:250px;">
+</section>
+
+<section id="intro">
+There were several art competitions, and I was really active in the community!
+</section>
+<section id="intro">
+Other than the competitions, I also got art-related awards outside of the club such as my 1st place award for best book cover art, and 1st place for best radio drama poster.
+</section>
+
+<section id="works">
+    <img src="cert3.png" style="width:250px;">
+    <img src="cert4.png" style="width:250px;">
+</section>
+    </div>
+
+    <div class="scroll-animate delay-2">
+<section id="intro">
+Back to the arts club, we also occasionally sold stickers, keychains, and other trinkets at our booth at club fairs! I'm proud to say I have made art for those booths and even managed it when the club officers weren't around (shoutout my senior ates and kuyas ily guys thank you for everything)
+</section>
+
+<section id="works">
+    <img src="me DD.png" style="width:500px;">
+</section>
+
+
+<section id="intro">
+    Recently, I also got the chance to have my art sold as part of my school's 60th anniversary :DD
+</section>
+    <section id="works">
+    <img src="left-image.png" style="width:500px;">
+    <br>
+    Freedom of Expression - 2026, my anti-ai piece
+</section>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all sections configured to animate on scroll
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+
+    const observerOptions = {
+        root: null, // Uses the browser viewport as the container boundary
+        rootMargin: "0px",
+        threshold: 0.15 // Triggers when 15% of the section enters the screen
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add the class that fires the visual CSS transition
+                entry.target.classList.add('active');
+                // Stop watching this element once it has animated into view
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Tell the script to monitor each element
+    animatedElements.forEach(el => observer.observe(el));
+});
+</script>
+
+</main>
+
+<footer> 2026 Leona Domingo || All rights reserved </footer>
+
+</body>
+</html>
